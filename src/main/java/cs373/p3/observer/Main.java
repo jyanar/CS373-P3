@@ -10,6 +10,7 @@ public class Main {
 		
 		restaurant.setOrder(10);
 		restaurant.notifyObservers();
+		
 		restaurant.setOrder(20);
 		restaurant.notifyObservers();
 	}
