@@ -8,10 +8,12 @@ public class Figure {
 	public Figure(String filename, boolean fetchSlowly) {
 		if (fetchSlowly) {
 			try {
-				Thread.sleep(4000);
+				Thread.sleep(4000);	// Represents an operation which is computationally heavy
 			} catch(InterruptedException ex) {
 				Thread.currentThread().interrupt();
 			}
+		} else {
+			this.description = "////// This is a preview of a bar plot of sales. //////";
 		}
 		this.filename = filename;
 	}

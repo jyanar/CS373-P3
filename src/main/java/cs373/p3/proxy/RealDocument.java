@@ -11,6 +11,19 @@ public class RealDocument implements Document {
 		this.filename = filename;
 	}
 
+	public String displayPreview() {
+		if (documentImage == null || documentText == null || documentText == null) {
+			fetchDocument();
+		}
+		return new String(
+			"************************* DOCUMENT PREVIEW *****************\n" +
+			documentImage.getDescription() +  "\n" +
+			documentFigure.getDescription() + "\n" +
+			documentText.getDescription() +   "\n" +
+			"************************************************************"
+		);
+	}
+
 	public String displayFullDocument() {
 		if (documentImage == null || documentText == null || documentText == null) {
 			fetchDocument();
@@ -24,7 +37,7 @@ public class RealDocument implements Document {
 		);
 	}
 
-	public void fetchDocument() {
+	private void fetchDocument() {
 		System.out.println("Fetching the document. Please wait.");
 		this.documentImage = fetchImage(filename);
 		this.documentFigure = fetchFigure(filename);

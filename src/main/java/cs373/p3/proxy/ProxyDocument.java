@@ -1,5 +1,12 @@
 package cs373.p3.proxy;
 
+/**
+  * Instead of fetching the full document given by the specified filename,
+  * ProxyDocument fetches small previews of the document which the user is
+  * currently mousing over. This is similar to the preview feature in OS X,
+  * where one can press space while in the finder in order to be presented
+  * with a preview of the document before opening it. 
+  */
 public class ProxyDocument implements Document {
 
 	private String filename;
@@ -12,13 +19,24 @@ public class ProxyDocument implements Document {
 		this.filename = filename;
 	}
 
+	public String displayPreview() {
+		fetchDocument();
+		return new String(
+			"************************* DOCUMENT PREVIEW *****************\n" +
+			documentImage.getDescription() +  "\n" +
+			documentFigure.getDescription() + "\n" +
+			documentText.getDescription() +   "\n" +
+			"************************************************************"
+		);
+	}
+
 	public String displayFullDocument() {
 		realDocument = new RealDocument(filename);
 		return realDocument.displayFullDocument();
 	}
 
-	public void fetchDocument() {
-		System.out.println("Fetching the document in fast mode.");
+	private void fetchDocument() {
+		System.out.println("Fetching document preview.");
 		this.documentImage = fetchImage(filename);
 		this.documentFigure = fetchFigure(filename);
 		this.documentText = fetchText(filename);
@@ -36,13 +54,3 @@ public class ProxyDocument implements Document {
 		return new Text(filename, false);
 	}
 }
-
-
-
-/**
-  * Instead of fetching the full document given by the specified filename,
-  * proxy document fetches small previews of the document which the user is
-  * currently mousing over. This is similar to the preview feature in OS X,
-  * where one can press space while in the viewfinder in order to be 
-  * presented with a preview of the document before opening it. 
-  */

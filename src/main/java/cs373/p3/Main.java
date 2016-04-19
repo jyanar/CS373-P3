@@ -15,22 +15,29 @@ import cs373.p3.proxy.Text;
 public class Main {
     public static void main(String[] args) {
 
-  		// Restaurant restaurant = new Restaurant();
-		// restaurant.addObserver(new French_Chef());
-		// restaurant.addObserver(new Chinese_Chef());
-		// restaurant.addObserver(new Mexican_Chef());
+    	System.out.println("********* OBSERVER PATTERN *********");
+  		Restaurant restaurant = new Restaurant();
+		restaurant.addObserver(new French_Chef());
+		restaurant.addObserver(new Chinese_Chef());
+		restaurant.addObserver(new Mexican_Chef());
 		
-		// restaurant.setOrder(10);
-		// restaurant.notifyObservers();
+		restaurant.setOrder(10);
+		restaurant.notifyObservers();
 		
-		// restaurant.setOrder(20);
-		// restaurant.notifyObservers();
+		restaurant.setOrder(20);
+		restaurant.notifyObservers();
 
-		Document document = new ProxyDocument("my_dank_doc.odt");
-		document.fetchDocument();
-		document.displayFullDocument();
+		System.out.println("\n********* PROXY PATTERN ************");
 
+    	// Here, we open a document, using a proxy at first -- which doesn't
+    	// pull the whole document into memory. If the user requests the whole
+    	// document, however, using displayFullDocument(), it will pull the whole
+    	// document from memory, and this takes a little more time since it's
+    	// computationally heavy. 
 
+		Document document = new ProxyDocument("my_doc.odt");
+		System.out.println(document.displayPreview());      // Utilizes the proxy document
+		System.out.println(document.displayFullDocument()); // Utilizes RealDocument
 
     }
 }
