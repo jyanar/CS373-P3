@@ -4,3 +4,5 @@
 To run the project:
 
   $ ./gradlew run
+  
+All Documentation is located in the docs folder
