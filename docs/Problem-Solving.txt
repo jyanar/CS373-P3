@@ -1,0 +1,7 @@
+Observer
+Through the implementation of the observer pattern, we were able to create a system where the size of an order could be updated and automatically tells each observer to update as well. This avoids the problem of worrying about how many other observers there are in the system or what those other observers are. It also helps to cause unique functionality to be triggered from changes to the subject class.
+
+Proxy
+The Proxy pattern allows us to deal with functionality that might be computationally heavy to use. In a sense, it allows us to be "lazy", since we don't deal with the heavy computation until we absolutely have to. The proxy is a class that wraps around the class that implements the heavy computation. 
+
+In this instance, a ProxyDocument class allows us to not have to fetch the full details of a document residing on our computer -- it wraps around RealDocument, only fetching the full document from memory when the user triggers the displayFullDocument() method. 
